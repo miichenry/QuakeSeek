@@ -1,0 +1,75 @@
+[09:46:43] INFO     initializing octree volume with 8000 nodes and octree.py:408
+                    8000.0 km³, smallest node size: 62.5 m                      
+           INFO     created new rundir my-search                   search.py:415
+           INFO     preparing search components                    search.py:517
+[09:46:44] INFO     preparing station inventory                   station.py:188
+           INFO     preparing squirrel waveform provider         squirrel.py:232
+           INFO     loading squirrel environment from home       squirrel.py:187
+                    directory                                                   
+           WARNING  Squirrel does not support n_threads          squirrel.py:200
+           INFO     scanning waveform directories                squirrel.py:219
+                    /srv/beegfs/scratch/users/h/henrymi/lu_mseed                
+                    _no_bad                                                     
+[11:22:41] INFO     loading StationXML responses from            squirrel.py:213
+                    stations_nodes.xml                                          
+[11:22:43] WARNING  removing station SS.5265.SW: no waveforms     station.py:172
+                    available in Squirrel                                       
+           WARNING  removed 1 stations without waveforms from     station.py:180
+                    inventory                                                   
+           INFO     preparing pre-processing modules                module.py:85
+           INFO     preparing ray tracer CakeTracer for phase      tracers.py:44
+                    cake:P, cake:S                                              
+           INFO     limiting traveltime LUT size to 838860 nodes     cake.py:580
+                    (2.0GiB), caching 2.6% of possible octree nodes             
+[11:22:44] INFO     pre-calculating travel time tree for cake:P      cake.py:618
+Traceback (most recent call last):
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/spit.py", line 515, in getset
+    return d[k]
+KeyError: (-1177.6230899510726, 0.0, 11.544782031033334)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/users/h/henrymi/.conda/envs/qseek/bin/qseek", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/apps/qseek.py", line 258, in main
+    asyncio.run(run(), debug=loop_debug)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/asyncio/futures.py", line 201, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/asyncio/tasks.py", line 232, in __step
+    result = coro.send(None)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/apps/qseek.py", line 255, in run
+    await search.start(force_rundir=args.force)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/search.py", line 552, in start
+    await self.prepare()
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/search.py", line 524, in prepare
+    await self.ray_tracers.prepare(
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/tracers/tracers.py", line 47, in prepare
+    await tracer.prepare(octree, stations, rundir)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/tracers/cake.py", line 619, in prepare
+    tree = TravelTimeTree.new(timing=timing, **traveltime_tree_args)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/tracers/cake.py", line 306, in new
+    model._sptree = model.calculate_tree()
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/tracers/cake.py", line 250, in calculate_tree
+    return spit.SPTree(
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/spit.py", line 286, in __init__
+    self.root = Cell(self, self.ones_int)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/spit.py", line 63, in __init__
+    vvv[-1][...] = self.tree._f_cached(vvv[:-1])
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/spit.py", line 368, in _f_cached
+    return getset(
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/spit.py", line 517, in getset
+    v = d[k] = f(k, *addargs)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/tracers/cake.py", line 236, in evaluate
+    rays = layered_model.arrivals(
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/cake.py", line 3573, in arrivals
+    for path in self.gather_paths(phases, zstart=zstart, zstop=zstop):
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/cake.py", line 3435, in gather_paths
+    layer_stop = self.layer(zstop, phase.direction_stop())
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/pyrocko/cake.py", line 3225, in layer
+    raise CakeError('Failed extracting layer at depth z=%s' % z)
+pyrocko.cake.CakeError: Failed extracting layer at depth z=-1177.6230899510726

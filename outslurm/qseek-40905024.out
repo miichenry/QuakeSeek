@@ -1,0 +1,22 @@
+[11:43:00] INFO     initializing octree volume with 8000 nodes and octree.py:408
+                    8000.0 km³, smallest node size: 62.5 m                      
+Traceback (most recent call last):
+  File "/home/users/h/henrymi/.conda/envs/qseek/bin/qseek", line 8, in <module>
+    sys.exit(main())
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/apps/qseek.py", line 258, in main
+    asyncio.run(run(), debug=loop_debug)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/asyncio/futures.py", line 201, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/asyncio/tasks.py", line 232, in __step
+    result = coro.send(None)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/apps/qseek.py", line 255, in run
+    await search.start(force_rundir=args.force)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/search.py", line 549, in start
+    self.init_rundir(force=force_rundir)
+  File "/home/users/h/henrymi/.conda/envs/qseek/lib/python3.10/site-packages/qseek/search.py", line 400, in init_rundir
+    raise FileExistsError(f"Rundir {rundir} already exists")
+FileExistsError: Rundir my-search already exists
