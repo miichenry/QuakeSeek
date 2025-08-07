@@ -2,7 +2,7 @@
   "project_dir": ".",
   "stations": {
     "pyrocko_station_yamls": [],
-    "station_xmls": ["./stations_nodes.xml"],
+    "station_xmls": ["stations_4_detection.xml"],
     "blacklist": [],
     "stations": [],
     "max_distance": null
@@ -12,12 +12,12 @@
     "environment": null,
     "persistent": null,
     "waveform_dirs": [
-      "/srv/beegfs/scratch/users/h/henrymi/lu_mseed_small"
+      "/srv/beegfs/scratch/users/h/henrymi/sibual_data/sibual_QuakeSeek_mseed"
     ],
     "start_time": null,
     "end_time": null,
     "channel_selector": null,
-    "n_threads": 8,
+    "n_threads": 20,
     "watch_waveforms": false
   },
   "pre_processing": [
@@ -31,34 +31,34 @@
       "stations": [],
       "corners": 4,
       "bandpass": [
-        0.5,
-        30.0    
+        5,
+        20.0    
       ],
       "demean": true
     }
   ],
   "octree": {
-    "location": {
-      "lat": 47.056051751257165,
-      "lon": 8.304790003581305,
-      "east_shift": 0.0,
-      "north_shift": 0.0,
-      "elevation": 0.0,
-      "depth": 0.0
+	  "location": {
+        "lat": 1.5346874165000002,
+        "lon": 99.23107150000001,
+        "east_shift": 0.0,
+        "north_shift": 0.0,
+        "elevation": 0.0,
+        "depth": 0.0
     },
     "root_node_size": 1000.0,
     "n_levels": 5,
     "east_bounds": [
-      -10000.0,
-      10000.0
+        -12500.000000000708,
+        12499.999999999292
     ],
     "north_bounds": [
-      -10000.0,
-      10000.0
+        -14000.000000000011,
+        13999.999999999989
     ],
     "depth_bounds": [
-      0.0,
-      20000.0
+        0.0,
+        20000.0
     ]
   },
   "image_functions": [
@@ -68,7 +68,7 @@
       "pretrained": "original",
       "window_overlap_samples": 1500,
       "torch_use_cuda": true,
-      "torch_cpu_threads": 4,
+      "torch_cpu_threads": 20,
       "batch_size": 128,
       "stack_method": "avg",
       "rescale_input": 1.0,
@@ -120,7 +120,7 @@
   "semblance_sampling_rate": 100,
   "detection_threshold": 0.2,
   "pick_confidence_threshold": 0.2,
-  "min_stations": 3,
+  "min_stations": 5,
   "absorbing_boundary": false,
   "absorbing_boundary_width": "root_node_size",
   "node_peak_interpolation": true,

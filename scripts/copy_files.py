@@ -4,15 +4,15 @@ import glob
 import os
 
 # Settings
-input_csv = '/home/users/h/henrymi/qseek_lu/kriens_v1/stations_50_kriens.csv'                   # Path to your input CSV
-source_dir = '/srv/beegfs/scratch/users/h/henrymi/lu_mseed_no_bad'      # Directory containing the files (with subdirectories)
-output_dir = '/srv/beegfs/scratch/users/h/henrymi/lu_mseed_kriens'              # Destination directory for copied files
+input_csv = 'stations_4_detection.csv'                   # Path to your input CSV
+source_dir = '/srv/beegfs/scratch/users/h/henrymi/sibual_mseed_renamed'      # Directory containing the files (with subdirectories)
+output_dir = '/srv/beegfs/scratch/users/h/henrymi/sibual_data/sibual_QuakeSeek_mseed'              # Destination directory for copied files
 
 # Create the output directory if it doesn't exist
 os.makedirs(output_dir, exist_ok=True)
 
 # Load CSV and sample 20 rows
-df = pd.read_csv(input_csv)
+df = pd.read_csv(input_csv, dtype={'station':str})
 
 #if len(df) < 20:
 #    raise ValueError("The CSV file contains fewer than 20 rows.")

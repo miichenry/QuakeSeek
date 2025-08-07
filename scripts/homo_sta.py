@@ -1,6 +1,15 @@
 import pandas as pd
 from sklearn.metrics.pairwise import euclidean_distances
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.transforms import offset_copy
+import pandas as pd
+import sys
+import cartopy.crs as ccrs
+import cartopy.io.img_tiles as cimgt
+from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+import os
+import seaborn
 
 def select_homogeneous_stations(input_csv_path, output_csv_path, num_stations_to_select=20):
     """
@@ -15,7 +24,7 @@ def select_homogeneous_stations(input_csv_path, output_csv_path, num_stations_to
     """
     try:
         # Load the station data
-        df = pd.read_csv(input_csv_path)
+        df = pd.read_csv(input_csv_path, dtype={'station':str})
     except FileNotFoundError:
         print(f"Error: Input file not found at {input_csv_path}")
         return
@@ -78,25 +87,7 @@ def select_homogeneous_stations(input_csv_path, output_csv_path, num_stations_to
     except Exception as e:
         print(f"Error saving CSV: {e}")
 
-# --- Example Usage ---
-if __name__ == "__main__":
-    # Create a dummy CSV file for demonstration
-    data = {
-        'station_id': [f'S{i:03}' for i in range(100)],
-        'latitude': np.random.uniform(30, 50, 100),  # Example latitude range
-        'longitude': np.random.uniform(-120, -70, 100), # Example longitude range
-        'other_data': np.random.rand(100)
-    }
-    dummy_df = pd.DataFrame(data)
-    dummy_input_csv = 'sample_stations.csv'
-    dummy_df.to_csv(dummy_input_csv, index=False)
+input_file = '/home/users/h/henrymi/jectpro/sibual/stations_sibualbuali.csv'
+output_file = './stations_4_detection.csv'
+select_homogeneous_stations(input_file, output_file, num_stations_to_select=63)
 
-    # Define input and output paths
-    input_file = '/home/users/h/henrymi/qseek_lu/kriens_v1/stations_7km_kriens.csv'
-    output_file = '/home/users/h/henrymi/qseek_lu/kriens_v1/stations_50_kriens.csv'
-
-    # Run the selection process
-    select_homogeneous_stations(input_file, output_file, num_stations_to_select=50)
-
-    # To use with your own file:
-    # select_homogeneous_stations('your_stations.csv', 'your_selected_stations.csv', 20)

@@ -1,20 +1,13 @@
 import obspy
 from obspy.core.inventory import Inventory
 import pandas as pd
-# 1. Define the list of station codes to keep.
-#    These should be strings and match the codes in your XML file.
-#stations_to_keep_codes = [
-#    "22921", "21448", "21086", "23020", "22606", "21639", "22402",
-#    "22945", "22721", "22647", "16094", "21770", "22864", "21624",
-#    "22886", "22602", "23005", "22700", "22329", "22764", "21170",
-#    "21455", "21460", "21757", "22684"
-#]
-df = pd.read_csv('/home/users/h/henrymi/qseek_lu/inwil_v1/stations_50_inwil.csv')
+
+df = pd.read_csv('stations_4_detection.csv')
 stations_to_keep_codes  = df['station'].astype(str).tolist()
 print(stations_to_keep_codes)
-# 2. Define input and output file paths (YOU MUST CHANGE THESE)
-input_xml_file = "/home/users/h/henrymi/qseek_lu/stations_nodes.xml"  # <--- CHANGE THIS
-output_xml_file = "/home/users/h/henrymi/qseek_lu/inwil_v1/stations_50_inwil.xml" # <--- CHANGE THIS (output file name)
+
+input_xml_file = "/home/users/h/henrymi/jectpro/sibual/sibualbuali_stations_nodes.xml"  # <--- CHANGE THIS
+output_xml_file = "/home/users/h/henrymi/QuakeSeek/sarulla1/stations_4_detection.xml" # <--- CHANGE THIS (output file name)
 
 print(f"Attempting to load inventory from: {input_xml_file}")
 try:
