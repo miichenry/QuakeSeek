@@ -17,7 +17,7 @@
     "start_time": null,
     "end_time": null,
     "channel_selector": null,
-    "n_threads": 20,
+    "n_threads": 5,
     "watch_waveforms": false
   },
   "pre_processing": [
@@ -68,7 +68,7 @@
       "pretrained": "original",
       "window_overlap_samples": 1500,
       "torch_use_cuda": true,
-      "torch_cpu_threads": 20,
+      "torch_cpu_threads": 5,
       "batch_size": 128,
       "stack_method": "avg",
       "rescale_input": 1.0,
